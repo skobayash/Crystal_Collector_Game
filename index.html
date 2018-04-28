@@ -56,7 +56,7 @@
 
 //  Global variables
 var targetNumber;
-var currentScore = null;
+var currentScore = 0;
 var wins = 0;
 var losses = 0;
 var rick;
@@ -67,53 +67,92 @@ var poopy;
 
 
 
+  $( document ).ready(function(){
 
     function gameReset(max, min) {
         targetNumber = Math.floor(Math.random() * (max - min + 1)+min);
         $("#targetNumber").html(targetNumber);
         console.log(targetNumber);
+
         
         morty = Math.floor(Math.random() * 12)+2;
         rick = Math.floor(Math.random() * 12)+2;
         jerry = Math.floor(Math.random() * 12)+2;
         poopy = Math.floor(Math.random() * 12)+2;
+
+        currentScore = 0;
+        $("#currentScore").html(currentScore);
+        
     }
     gameReset(100, 25);
+
 
     $("#morty").on("click", function() {
         console.log("Morty = " + morty)
         currentScore += morty;
         $("#currentScore").html(currentScore);
+        if (currentScore > targetNumber) {
+            alert("You lose");
+            losses++;
+            $("#losses").html(losses);
+            gameReset(100, 25);
+        } else if (currentScore == targetNumber) {
+            alert("You won!");
+            wins++;
+            $("#wins").html(wins);
+            gameReset(100,25);
+        }
     })
+    
     $("#rick").on("click", function() {
         console.log("Rick = " + rick)
         currentScore += rick;
         $("#currentScore").html(currentScore);
+        if (currentScore > targetNumber) {
+            alert("You lose");
+            losses++;
+            $("#losses").html(losses);
+            gameReset(100, 25);
+        } else if (currentScore == targetNumber) {
+            alert("You won!");
+            wins++;
+            $("#wins").html(wins);
+            gameReset(100,25);
+        }
     })
     $("#jerry").on("click", function() {
         console.log("Jerry = " + jerry)
         currentScore += jerry;
         $("#currentScore").html(currentScore);
+        if (currentScore > targetNumber) {
+            alert("You lose");
+            losses++;
+            $("#losses").html(losses);
+            gameReset(100, 25);
+        } else if (currentScore == targetNumber) {
+            alert("You won!");
+            wins++;
+            $("#wins").html(wins);
+            gameReset(100,25);
+        }
     })
     $("#poopy").on("click", function() {
         console.log("Poopybutthole = " + poopy)
         currentScore += poopy;
         $("#currentScore").html(currentScore);
+        if (currentScore > targetNumber) {
+            alert("You lose");
+            losses++;
+            $("#losses").html(losses);
+            gameReset(100, 25);
+        } else if (currentScore == targetNumber) {
+            alert("You won!");
+            wins++;
+            $("#wins").html(wins);
+            gameReset(100,25);
+        }
     })
-    
-      if (currentScore > targetNumber) {
-        alert("You lose");
-        losses++;
-        $("#losses").html(losses);
-        // gameReset(100, 25);
-    } else if (currentScore == targetNumber) {
-        alert("You won!");
-        wins++;
-        $("#wins").html(wins);
-        // gameReset(100,25);
-    } else {
-        alert("why")
-    }  
+})
     
     
     </script>
