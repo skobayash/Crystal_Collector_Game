@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TITLE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Crystal Collector</h1>
+                <p class="lead">Instructions here</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <p class="lead">Target Number: <span id="targetNumber">0</span></p>
+                <p class="lead">Your total score is: <span id="currentScore">0</span></p>
+            </div>
+            <div class="col-md-2">
+                <p class="lead" id="wins">Wins: <span id="wins">0</span></p>
+                <p class="lead">Losses: <span id="losses">0</span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <img id="morty" alt="image1" src="assets/images/Mortybebb.png" />
+            </div>
+            <div class="col-md-2">
+                <img id="rick" alt="image2" src="assets/images/rick.png" />
+            </div>
+            <div class="col-md-2">
+                <img id="jerry" alt="image3" src="assets/images/jerry.png" />
+            </div>
+            <div class="col-md-2">
+                <img id="poopy" alt="image4" src="assets/images/poopy.png" />
+            </div>
+        </div>
+    </br>
+    
+    <!-- container end -->
+    </div>
+
+
+<script type="text/javascript">
+
+//  Global variables
+var targetNumber;
+var currentScore = null;
+var wins = 0;
+var losses = 0;
+var rick;
+var morty;
+var jerry;
+var poopy;
+
+
+
+
+
+    function gameReset(max, min) {
+        targetNumber = Math.floor(Math.random() * (max - min + 1)+min);
+        $("#targetNumber").html(targetNumber);
+        console.log(targetNumber);
+        
+        morty = Math.floor(Math.random() * 12)+2;
+        rick = Math.floor(Math.random() * 12)+2;
+        jerry = Math.floor(Math.random() * 12)+2;
+        poopy = Math.floor(Math.random() * 12)+2;
+    }
+    gameReset(100, 25);
+
+    $("#morty").on("click", function() {
+        console.log("Morty = " + morty)
+        currentScore += morty;
+        $("#currentScore").html(currentScore);
+    })
+    $("#rick").on("click", function() {
+        console.log("Rick = " + rick)
+        currentScore += rick;
+        $("#currentScore").html(currentScore);
+    })
+    $("#jerry").on("click", function() {
+        console.log("Jerry = " + jerry)
+        currentScore += jerry;
+        $("#currentScore").html(currentScore);
+    })
+    $("#poopy").on("click", function() {
+        console.log("Poopybutthole = " + poopy)
+        currentScore += poopy;
+        $("#currentScore").html(currentScore);
+    })
+    
+      if (currentScore > targetNumber) {
+        alert("You lose");
+        losses++;
+        $("#losses").html(losses);
+        // gameReset(100, 25);
+    } else if (currentScore == targetNumber) {
+        alert("You won!");
+        wins++;
+        $("#wins").html(wins);
+        // gameReset(100,25);
+    } else {
+        alert("why")
+    }  
+    
+    
+    </script>
+    
+</body>
+
+</html>
