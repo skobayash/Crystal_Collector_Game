@@ -1,0 +1,13 @@
+.jumbotron {
+    background-image: url("assets/images/info1.jpg");
+    background-size: 100%;
+    min-height: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#feedbackImage {
+    width: 200px;
+    height: auto;
+}

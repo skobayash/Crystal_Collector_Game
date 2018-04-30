@@ -3,11 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>TITLE</title>
+    <title>Rick and Morty Collector</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <style>  
+    .jumbotron {
+        background-image: url("assets/images/showme.png");
+        background-size: 100%;
+        min-height: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #feedbackImage {
+    float: right;
+    margin-right: 15px;
+}
+
+    
+</style> 
 </head>
 
 <body>
@@ -17,8 +34,21 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">Crystal Collector</h1>
-                <p class="lead">Instructions here</p>
+                <h1 class="display-4">Rick and Morty Collector</h1>
+                <p>Instructions:</p>
+                <p>
+                    You will be given a random number at the start of the game.
+                </p>
+                <p>
+                    Rick, Morty, Jerry, and Mr. PoopyButthole each carry a certain number of points 
+                    that change each round. The value each character holds is hidden until you 
+                    click on them. By clicking on them, their respective number of points will be 
+                    added to your total score. 
+                </p>
+                <p>
+                    You win the game by matching your total score to the target number 
+                    (which changes each round). You lose if your score exceeds the target number.
+                </p>
             </div>
         </div>
         
@@ -44,6 +74,12 @@
             </div>
             <div class="col-md-2">
                 <img id="poopy" alt="image4" src="assets/images/poopy.png" />
+            </div>
+            <div class="row">
+                <div class="col-md-2" id="feedbackImage"></div>
+            </div>
+            <div class="row">
+                <p><span id="feedback"></span></p>
             </div>
         </div>
     </br>
@@ -75,16 +111,16 @@ var poopy;
         console.log(targetNumber);
 
         
-        morty = Math.floor(Math.random() * 12)+2;
-        rick = Math.floor(Math.random() * 12)+2;
-        jerry = Math.floor(Math.random() * 12)+2;
-        poopy = Math.floor(Math.random() * 12)+2;
+        morty = Math.floor(Math.random() * 12)+1;
+        rick = Math.floor(Math.random() * 12)+1;
+        jerry = Math.floor(Math.random() * 12)+1;
+        poopy = Math.floor(Math.random() * 12)+1;
 
         currentScore = 0;
         $("#currentScore").html(currentScore);
         
     }
-    gameReset(100, 25);
+    gameReset(120, 19);
 
 
     $("#morty").on("click", function() {
@@ -92,15 +128,15 @@ var poopy;
         currentScore += morty;
         $("#currentScore").html(currentScore);
         if (currentScore > targetNumber) {
-            alert("You lose");
+            $("#feedbackImage").html("<img src='assets/images/loser.gif'/>");
             losses++;
             $("#losses").html(losses);
-            gameReset(100, 25);
+            gameReset(120, 19);
         } else if (currentScore == targetNumber) {
-            alert("You won!");
+            $("#feedbackImage").html("<img src='assets/images/winner.gif'/>");
             wins++;
             $("#wins").html(wins);
-            gameReset(100,25);
+            gameReset(120, 19);
         }
     })
     
@@ -109,15 +145,15 @@ var poopy;
         currentScore += rick;
         $("#currentScore").html(currentScore);
         if (currentScore > targetNumber) {
-            alert("You lose");
+            $("#feedbackImage").html("<img src='assets/images/loser.gif'/>");
             losses++;
             $("#losses").html(losses);
-            gameReset(100, 25);
+            gameReset(120, 19);
         } else if (currentScore == targetNumber) {
-            alert("You won!");
+            $("#feedbackImage").html("<img src='assets/images/winner.gif'/>");
             wins++;
             $("#wins").html(wins);
-            gameReset(100,25);
+            gameReset(120, 19);
         }
     })
     $("#jerry").on("click", function() {
@@ -125,15 +161,15 @@ var poopy;
         currentScore += jerry;
         $("#currentScore").html(currentScore);
         if (currentScore > targetNumber) {
-            alert("You lose");
+            $("#feedbackImage").html("<img src='assets/images/loser.gif'/>");
             losses++;
             $("#losses").html(losses);
-            gameReset(100, 25);
+            gameReset(120, 19);
         } else if (currentScore == targetNumber) {
-            alert("You won!");
+            $("#feedbackImage").html("<img src='assets/images/winner.gif'/>");
             wins++;
             $("#wins").html(wins);
-            gameReset(100,25);
+            gameReset(120, 19);
         }
     })
     $("#poopy").on("click", function() {
@@ -141,20 +177,29 @@ var poopy;
         currentScore += poopy;
         $("#currentScore").html(currentScore);
         if (currentScore > targetNumber) {
-            alert("You lose");
+            $("#feedbackImage").html("<img src='assets/images/loser.gif'/>");
             losses++;
             $("#losses").html(losses);
-            gameReset(100, 25);
+            gameReset(120, 19);
         } else if (currentScore == targetNumber) {
-            alert("You won!");
+            $("#feedbackImage").html("<img src='assets/images/winner.gif'/>");
             wins++;
             $("#wins").html(wins);
-            gameReset(100,25);
+            gameReset(120, 19);
         }
     })
 })
     
-    
+ /*   var crystalArray = ['one.jpg', 'two.jpg', 'three.jpg', 'four.jpg'];
+
+for(var i = 0; i < crystalArray.length; i++){
+  var crystalImg = $("<img>"); // Make a new image element
+  crystalImg.attr("src", crystalArray[i]); // Make the src point to one of the addresses
+  crystalImg.attr('data-crystal', Math.floor(Math.random() * 12) + 2) // Assign a data value to a random number you can extract when clicked that won't be 1
+  $('#targetDiv').append(crystalImg); //append each image to a Div in your HTML
+}
+
+*/
     </script>
     
 </body>
