@@ -1,5 +1,5 @@
 .jumbotron {
-    background-image: url("assets/images/info1.jpg");
+    background-image: url("../images/showme.png");
     background-size: 100%;
     min-height: 50%;
     background-repeat: no-repeat;
@@ -8,6 +8,25 @@
 }
 
 #feedbackImage {
-    width: 200px;
-    height: auto;
+    float: right;
+    margin-right: 15px;
+}
+
+.images {
+    margin: 15px;
+}
+
+#feedbackImage {
+    margin-left: 200px;
+    float: right;
+}
+
+.bg-secondary,
+.bg-info {
+    padding-top: 15px;
+    margin-left: 15px;
+}
+
+#feedbackText {
+    float: right;
 }

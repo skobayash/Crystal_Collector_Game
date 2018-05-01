@@ -2,28 +2,12 @@
 <html lang="en-us">
 
 <head>
+
     <meta charset="UTF-8">
     <title>Rick and Morty Collector</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- <style>  
-    .jumbotron {
-        background-image: url("assets/images/showme.png");
-        background-size: 100%;
-        min-height: 50%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
-
-    #feedbackImage {
-    float: right;
-    margin-right: 15px;
-}
-
-    
-</style> 
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -52,146 +36,32 @@
         </div>
         
         <div class="row">
-            <div class="col-md-3">
-                <p class="lead">Target Number: <span id="targetNumber">0</span></p>
-                <p class="lead">Your total score is: <span id="currentScore">0</span></p>
+            <div class="col-md-3 bg-info text-dark rounded">
+                <p class="lead font-weight-bold">Target Number: <span id="targetNumber">0</span></p>
+                <p class="lead font-weight-bold">Your Total Score Is: <span id="currentScore">0</span></p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 bg-secondary text-white rounded">
                 <p class="lead" id="wins">Wins: <span id="wins">0</span></p>
                 <p class="lead">Losses: <span id="losses">0</span></p>
             </div>
+            <div class="col-md-6">
+                <h2><span id="feedbackText"></span></h2>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <img id="morty" alt="image1" src="assets/images/Mortybebb.png" />
-            </div>
-            <div class="col-md-2">
-                <img id="rick" alt="image2" src="assets/images/rick.png" />
-            </div>
-            <div class="col-md-2">
-                <img id="jerry" alt="image3" src="assets/images/jerry.png" />
-            </div>
-            <div class="col-md-2">
-                <img id="poopy" alt="image4" src="assets/images/poopy.png" />
+            <div id="charRow">
             </div>
             <div class="row">
                 <div class="col-md-2" id="feedbackImage"></div>
             </div>
-            <div class="row">
-                <p><span id="feedback"></span></p>
-            </div>
         </div>
-    </br>
-    
-    <!-- container end -->
+    </br> 
+
+
     </div>
 
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script type="text/javascript">
-
-
-//  Global variables
-var targetNumber;
-var currentScore = 0;
-var wins = 0;
-var losses = 0;
-var rick;
-var morty;
-var jerry;
-var poopy;
-
-
-
-  $( document ).ready(function(){
-
-    function gameReset(max, min) {
-        targetNumber = Math.floor(Math.random() * (max - min + 1)+min);
-        $("#targetNumber").html(targetNumber);
-        console.log(targetNumber);
-
-        
-        morty = Math.floor(Math.random() * 12)+1;
-        rick = Math.floor(Math.random() * 12)+1;
-        jerry = Math.floor(Math.random() * 12)+1;
-        poopy = Math.floor(Math.random() * 12)+1;
-
-        currentScore = 0;
-        $("#currentScore").html(currentScore);
-        
-    }
-    gameReset(120, 19);
-
-
-    $("#morty").on("click", function() {
-        console.log("Morty = " + morty)
-        currentScore += morty;
-        $("#currentScore").html(currentScore);
-        if (currentScore > targetNumber) {
-            $("#feedbackImage").html("<img src='assets/images/loser.gif'/>");
-            losses++;
-            $("#losses").html(losses);
-            gameReset(120, 19);
-        } else if (currentScore == targetNumber) {
-            $("#feedbackImage").html("<img src='assets/images/winner.gif'/>");
-            wins++;
-            $("#wins").html(wins);
-            gameReset(120, 19);
-        }
-    })
-    
-    $("#rick").on("click", function() {
-        console.log("Rick = " + rick)
-        currentScore += rick;
-        $("#currentScore").html(currentScore);
-        if (currentScore > targetNumber) {
-            $("#feedbackImage").html("<img src='assets/images/loser.gif'/>");
-            losses++;
-            $("#losses").html(losses);
-            gameReset(120, 19);
-        } else if (currentScore == targetNumber) {
-            $("#feedbackImage").html("<img src='assets/images/winner.gif'/>");
-            wins++;
-            $("#wins").html(wins);
-            gameReset(120, 19);
-        }
-    })
-    $("#jerry").on("click", function() {
-        console.log("Jerry = " + jerry)
-        currentScore += jerry;
-        $("#currentScore").html(currentScore);
-        if (currentScore > targetNumber) {
-            $("#feedbackImage").html("<img src='assets/images/loser.gif'/>");
-            losses++;
-            $("#losses").html(losses);
-            gameReset(120, 19);
-        } else if (currentScore == targetNumber) {
-            $("#feedbackImage").html("<img src='assets/images/winner.gif'/>");
-            wins++;
-            $("#wins").html(wins);
-            gameReset(120, 19);
-        }
-    })
-    $("#poopy").on("click", function() {
-        console.log("Poopybutthole = " + poopy)
-        currentScore += poopy;
-        $("#currentScore").html(currentScore);
-        if (currentScore > targetNumber) {
-            $("#feedbackImage").html("<img src='assets/images/loser.gif'/>");
-            losses++;
-            $("#losses").html(losses);
-            gameReset(120, 19);
-        } else if (currentScore == targetNumber) {
-            $("#feedbackImage").html("<img src='assets/images/winner.gif'/>");
-            wins++;
-            $("#wins").html(wins);
-            gameReset(120, 19);
-        }
-    })
-})
-    
-</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="assets/javascript/game.js"></script>
     
 </body>
 
